@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/AndroidStudioProjects/oss_project/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.2575" />
+        <entry key="..\:/AndroidStudioProjects/oss_project/app/src/main/res/drawable/listview_bottomline.xml" value="0.2575" />
+        <entry key="..\:/AndroidStudioProjects/oss_project/app/src/main/res/drawable/round_border.xml" value="0.2575" />
         <entry key="..\:/AndroidStudioProjects/oss_project/app/src/main/res/layout/activity_list.xml" value="0.36614583333333334" />
         <entry key="..\:/AndroidStudioProjects/oss_project/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
         <entry key="..\:/AndroidStudioProjects/oss_project/app/src/main/res/layout/fragment_1.xml" value="0.36614583333333334" />
