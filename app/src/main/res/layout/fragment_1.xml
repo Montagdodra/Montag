@@ -5,30 +5,36 @@
     android:layout_height="match_parent"
     tools:context=".Fragment1">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal"
-            android:layout_marginTop="4dp">
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/search_txt"/>
-        </LinearLayout>
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/map_recyclerview"
-            android:visibility="gone"
-            android:layout_width="match_parent"
-            android:layout_height="400dp"/>
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
 
         <RelativeLayout
+            android:id="@+id/map_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/map_view"/>
-    </LinearLayout>
+            android:padding="10dp"
+            android:orientation="vertical">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="장소를 입력하세요"
+                android:padding="10dp"
+                android:background="@drawable/round_border"
+                android:layout_gravity="center_horizontal|top"
+                android:id="@+id/search_txt"/>
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/map_recyclerview"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:background="@drawable/round_border"
+                />
+        </LinearLayout>
+    </FrameLayout>
 </FrameLayout>
