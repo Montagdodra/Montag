@@ -35,6 +35,15 @@
                 android:layout_height="400dp"
                 android:background="@drawable/round_border"
                 />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="이 지역 \n주변 검색"
+                android:layout_gravity="center|right"
+                android:id="@+id/searchL"
+                />
+
         </LinearLayout>
     </FrameLayout>
 </FrameLayout>
