@@ -37,11 +37,18 @@
                 />
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:text="이 지역 \n주변 검색"
                 android:layout_gravity="center|right"
+                android:background="@drawable/ic_baseline_location_on_24"
                 android:id="@+id/searchL"
+                />
+            <Button
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|right"
+                android:background="@drawable/ic_baseline_my_location_24"
+                android:id="@+id/MyLocation"
                 />
 
         </LinearLayout>

@@ -4,16 +4,21 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/AndroidStudioProjects/oss_project/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.2575" />
+        <entry key="..\:/AndroidStudioProjects/oss_project/app/src/main/res/drawable/ic_baseline_location_on_24.xml" value="0.2575" />
         <entry key="..\:/AndroidStudioProjects/oss_project/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2575" />
         <entry key="..\:/AndroidStudioProjects/oss_project/app/src/main/res/drawable/listview_bottomline.xml" value="0.2575" />
         <entry key="..\:/AndroidStudioProjects/oss_project/app/src/main/res/drawable/round_border.xml" value="0.2575" />
+        <entry key="..\:/AndroidStudioProjects/oss_project/app/src/main/res/drawable/round_orange.xml" value="0.2575" />
+        <entry key="..\:/AndroidStudioProjects/oss_project/app/src/main/res/layout/activity_detail.xml" value="0.36614583333333334" />
         <entry key="..\:/AndroidStudioProjects/oss_project/app/src/main/res/layout/activity_list.xml" value="0.36614583333333334" />
         <entry key="..\:/AndroidStudioProjects/oss_project/app/src/main/res/layout/activity_loading_screen.xml" value="0.36614583333333334" />
         <entry key="..\:/AndroidStudioProjects/oss_project/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndroidStudioProjects/oss_project/app/src/main/res/layout/bottom_sheet.xml" value="0.36614583333333334" />
+        <entry key="..\:/AndroidStudioProjects/oss_project/app/src/main/res/layout/custom_dialog.xml" value="0.3651041666666667" />
         <entry key="..\:/AndroidStudioProjects/oss_project/app/src/main/res/layout/fragment_1.xml" value="0.36614583333333334" />
         <entry key="..\:/AndroidStudioProjects/oss_project/app/src/main/res/layout/fragment_2.xml" value="0.3515625" />
         <entry key="..\:/AndroidStudioProjects/oss_project/app/src/main/res/layout/item_location.xml" value="0.36614583333333334" />
-        <entry key="..\:/AndroidStudioProjects/oss_project/app/src/main/res/layout/row_list.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/oss_project/app/src/main/res/layout/row_list.xml" value="0.22" />
         <entry key="..\:/AndroidStudioProjects/oss_project/app/src/main/res/layout/row_listview.xml" value="0.36614583333333334" />
         <entry key="..\:/AndroidStudioProjects/oss_project/app/src/main/res/menu/fragment_item.xml" value="0.36614583333333334" />
         <entry key="..\:/AndroidStudioProjects/oss_project/app/src/main/res/xml/network_security_config.xml" value="0.18645833333333334" />
