@@ -371,8 +371,8 @@ public class Fragment2 extends Fragment {
 
     }
 
-    public void BindData(String title, String image, String address, String tag1, String tag2, String tag3) {
-        models.add(new Model(title, image, address, tag1, tag2, tag3));
+    public void BindData(String title, String image, String image1,String address, String tag1, String tag2, String tag3, String intro, String lat, String longt) {
+        models.add(new Model(title, image, image1, address, tag1, tag2, tag3, intro, lat, longt));
 
         adapter = new Adapter(getActivity(), models);
         lv.setAdapter(adapter);
@@ -388,7 +388,11 @@ public class Fragment2 extends Fragment {
         //String label = null;
         String alltag = null;
         String image = null;
+        String image1 = null;
         String title = null;
+        String intro = null;
+        String lat;
+        String longt;
         //String intro = null;
         //String[] tags = {"1", "2","3"};
 
@@ -428,8 +432,11 @@ public class Fragment2 extends Fragment {
                 //label = contentscd.optString("label");
                 alltag = jObject.optString("alltag");
                 image = photoid.optString("thumbnailpath");
+                image1 = photoid.optString("imgpath");
                 title = jObject.optString("title");
-                //intro = jObject.optString("introduction");
+                intro = jObject.optString("introduction");
+                lat = jObject.optString("latitude");
+                longt = jObject.optString("longitude");
 
                 String[] tags = alltag.split(",");
                 String[] all = alltags.split(",");
@@ -438,7 +445,7 @@ public class Fragment2 extends Fragment {
                 }*/
                 if (alltags.length() < 1){
 
-                    BindData(image, title, address, tags[0], tags[1], tags[2]);
+                    BindData(image, title, image1, address, tags[0], tags[1], tags[2], intro, lat, longt);
                     break;
 
                 }
@@ -451,7 +458,7 @@ public class Fragment2 extends Fragment {
                                     if (tags.length < 3) {
 
                                     } else {
-                                        BindData(image, title, address, tags[0], tags[1], tags[2]);
+                                        BindData(image, title, image1, address, tags[0], tags[1], tags[2], intro, lat, longt);
                                         break;
                                     }
                                 }

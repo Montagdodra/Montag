@@ -77,6 +77,13 @@ public class Adapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, model.getName(), Toast.LENGTH_SHORT).show();
+                intent.putExtra("adr", model.getAddress());
+                intent.putExtra("nm", model.getName());
+                intent.putExtra("it", model.getIntro());
+                intent.putExtra("img", model.getImage1());
+                intent.putExtra("lat", model.getLat());
+                intent.putExtra("longt", model.getLongt());
+
                 context.startActivity(intent);
             }
         });
