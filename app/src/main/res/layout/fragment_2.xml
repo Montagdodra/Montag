@@ -17,9 +17,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="오늘의 추천 관광지"
+            android:hint="선택한 키워드가 없습니다"
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
+            android:textColorHint="#FF7F50"
             android:textColor="#FF7F50"
             android:textSize="18sp"
             android:id="@+id/counttxt"/>
@@ -41,7 +42,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     android:padding="10dp"
                     android:orientation="vertical"
                     android:background="@drawable/round_border">
@@ -55,62 +56,280 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="연령대" />
-                        <RadioGroup
+                        <LinearLayout
                             android:id="@+id/age"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:padding="5dp"
                             android:orientation="horizontal">
-                                <RadioButton
+                                <CheckBox
                                     android:id="@+id/parent"
+                                    android:background="@drawable/round_orange"
+                                    android:text="부모님"
+                                    android:textColor="#FF7F50"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:paddingStart="5dp"
+                                    android:paddingEnd="5dp"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"/>
-                                <RadioButton
+                                    android:layout_height="30dp"
+                                    android:layout_marginEnd="10dp"/>
+                                <CheckBox
                                     android:id="@+id/children"
+                                    android:background="@drawable/round_orange"
+                                    android:text="아이"
+                                    android:textColor="#FF7F50"
+                                    android:button="@null"
+                                    android:gravity="center"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"/>
-                                <RadioButton
+                                    android:layout_height="30dp"
+                                    android:layout_marginEnd="10dp"/>
+                                <CheckBox
                                     android:id="@+id/couple"
+                                    android:background="@drawable/round_orange"
+                                    android:text="연인"
+                                    android:textColor="#FF7F50"
+                                    android:button="@null"
+                                    android:gravity="center"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"/>
-                        </RadioGroup>
-                        <TextView
+                                    android:layout_height="30dp"
+                                    android:layout_marginEnd="10dp"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/age1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="테마" />
+                            android:padding="5dp"
+                            android:orientation="horizontal">
+                                <CheckBox
+                                    android:id="@+id/alone"
+                                    android:background="@drawable/round_orange"
+                                    android:text="혼자"
+                                    android:textColor="#FF7F50"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="30dp"
+                                    android:layout_marginEnd="10dp"/>
+                                <CheckBox
+                                    android:id="@+id/friend"
+                                    android:background="@drawable/round_orange"
+                                    android:text="친구"
+                                    android:textColor="#FF7F50"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="30dp"
+                                    android:layout_marginEnd="10dp"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="테마"
+                                    android:layout_marginEnd="80dp"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="날씨"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent">
                         <RadioGroup
                             android:id="@+id/theme"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                            android:orientation="vertical">
                                 <RadioButton
+                                    android:id="@+id/alltheme"
+                                    android:background="@drawable/round_orange"
+                                    android:text="선택안함"
+                                    android:textColor="#FF7F50"
+                                    android:checked="true"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:paddingStart="5dp"
+                                    android:paddingEnd="5dp"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"/>
+                                    android:layout_height="30dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginBottom="5dp"/>
+
                                 <RadioButton
+                                    android:id="@+id/activities"
+                                    android:background="@drawable/round_orange"
+                                    android:text="체험/액티비티"
+                                    android:textColor="#FF7F50"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:paddingStart="5dp"
+                                    android:paddingEnd="5dp"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"/>
+                                    android:layout_height="30dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginBottom="5dp"/>
                                 <RadioButton
+                                    android:id="@+id/gallery"
+                                    android:background="@drawable/round_orange"
+                                    android:text="미술/박물관"
+                                    android:textColor="#FF7F50"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:paddingStart="5dp"
+                                    android:paddingEnd="5dp"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"/>
+                                    android:layout_height="30dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginBottom="5dp"/>
+
+
+                                        <RadioButton
+                                            android:id="@+id/historical"
+                                            android:background="@drawable/round_orange"
+                                            android:text="문화유적지"
+                                            android:textColor="#FF7F50"
+                                            android:button="@null"
+                                            android:gravity="center"
+                                            android:paddingStart="5dp"
+                                            android:paddingEnd="5dp"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="30dp"
+                                            android:layout_marginEnd="10dp"
+                                            android:layout_marginBottom="5dp"/>
+                                        <RadioButton
+                                            android:id="@+id/mountain"
+                                            android:background="@drawable/round_orange"
+                                            android:text="오름/걷기"
+                                            android:textColor="#FF7F50"
+                                            android:button="@null"
+                                            android:gravity="center"
+                                            android:paddingStart="5dp"
+                                            android:paddingEnd="5dp"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="30dp"
+                                            android:layout_marginEnd="10dp"
+                                            android:layout_marginBottom="5dp"/>
+                                        <RadioButton
+                                            android:id="@+id/photozone"
+                                            android:background="@drawable/round_orange"
+                                            android:text="포토스팟"
+                                            android:textColor="#FF7F50"
+                                            android:button="@null"
+                                            android:gravity="center"
+                                            android:paddingStart="5dp"
+                                            android:paddingEnd="5dp"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="30dp"
+                                            android:layout_marginEnd="10dp"
+                                            android:layout_marginBottom="5dp"/>
+
+
+
+                                        <RadioButton
+                                            android:id="@+id/healing"
+                                            android:background="@drawable/round_orange"
+                                            android:text="휴식/힐링"
+                                            android:textColor="#FF7F50"
+                                            android:button="@null"
+                                            android:gravity="center"
+                                            android:paddingStart="5dp"
+                                            android:paddingEnd="5dp"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="30dp"
+                                            android:layout_marginEnd="10dp"
+                                            android:layout_marginBottom="5dp"/>
+                                        <RadioButton
+                                            android:id="@+id/beach"
+                                            android:background="@drawable/round_orange"
+                                            android:text="해변/포구"
+                                            android:textColor="#FF7F50"
+                                            android:button="@null"
+                                            android:gravity="center"
+                                            android:paddingStart="5dp"
+                                            android:paddingEnd="5dp"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="30dp"
+                                            android:layout_marginEnd="10dp"
+                                            android:layout_marginBottom="5dp"/>
+                                        <RadioButton
+                                            android:id="@+id/themepark"
+                                            android:background="@drawable/round_orange"
+                                            android:text="테마공원"
+                                            android:textColor="#FF7F50"
+                                            android:button="@null"
+                                            android:gravity="center"
+                                            android:paddingStart="5dp"
+                                            android:paddingEnd="5dp"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="30dp"
+                                            android:layout_marginEnd="10dp"
+                                            android:layout_marginBottom="5dp"/>
+
                         </RadioGroup>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="날씨" />
+
                         <RadioGroup
                             android:id="@+id/weather"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                            android:orientation="vertical">
                                 <RadioButton
+                                    android:id="@+id/noneweather"
+                                    android:background="@drawable/round_orange"
+                                    android:text="선택안함"
+                                    android:textColor="#FF7F50"
+                                    android:checked="true"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:paddingStart="5dp"
+                                    android:paddingEnd="5dp"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"/>
+                                    android:layout_height="30dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginBottom="5dp"/>
                                 <RadioButton
+                                    android:id="@+id/sunny"
+                                    android:background="@drawable/round_orange"
+                                    android:text="맑음"
+                                    android:textColor="#FF7F50"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:paddingStart="5dp"
+                                    android:paddingEnd="5dp"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"/>
+                                    android:layout_height="30dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginBottom="5dp"/>
                                 <RadioButton
+                                    android:id="@+id/cloud"
+                                    android:background="@drawable/round_orange"
+                                    android:text="흐림"
+                                    android:textColor="#FF7F50"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:paddingStart="5dp"
+                                    android:paddingEnd="5dp"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"/>
+                                    android:layout_height="30dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginBottom="5dp"/>
+                                <RadioButton
+                                    android:id="@+id/rainy"
+                                    android:background="@drawable/round_orange"
+                                    android:text="비/바람/눈"
+                                    android:textColor="#FF7F50"
+                                    android:button="@null"
+                                    android:gravity="center"
+                                    android:paddingStart="5dp"
+                                    android:paddingEnd="5dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="30dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginBottom="5dp"/>
                         </RadioGroup>
+                        </LinearLayout>
                 </LinearLayout>
         </LinearLayout>
 

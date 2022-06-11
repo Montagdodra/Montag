@@ -311,8 +311,8 @@ public class Fragment1 extends Fragment {
                                                                                                                     MapCircle circle1 = new MapCircle(
                                                                                                                             MapPoint.mapPointWithGeoCoord(y, x), // center
                                                                                                                             1000, // radius
-                                                                                                                            Color.argb(128, 255, 0, 0), // strokeColor
-                                                                                                                            Color.argb(128, 0, 255, 0) // fillColor
+                                                                                                                            Color.argb(128, 252, 141, 20), // strokeColor
+                                                                                                                            Color.argb(128, 252, 141, 20) // fillColor
                                                                                                                     );
                                                                                                                     circle1.setTag(5678);
                                                                                                                     mapView.addCircle(circle1);

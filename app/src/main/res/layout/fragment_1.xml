@@ -37,15 +37,15 @@
                 />
 
             <Button
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_gravity="center|right"
                 android:background="@drawable/ic_baseline_location_on_24"
                 android:id="@+id/searchL"
                 />
             <Button
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_gravity="center|right"
                 android:background="@drawable/ic_baseline_my_location_24"
                 android:id="@+id/MyLocation"
