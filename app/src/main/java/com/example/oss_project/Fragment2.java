@@ -2,20 +2,37 @@ package com.example.oss_project;
 
 import androidx.fragment.app.Fragment;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.oss_project.Model.Model;
 import com.example.oss_project.Adapter.Adapter;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.text.BreakIterator;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
+
+import javax.net.ssl.HttpsURLConnection;
 
 public class Fragment2 extends Fragment {
     ListView lv;
     ArrayList<Model> models = new ArrayList<>();
     Adapter adapter;
+
+    TextView text1;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -23,12 +40,24 @@ public class Fragment2 extends Fragment {
         View v = inflater.inflate(R.layout.fragment_2, container, false);
 
         lv = v.findViewById(R.id.lv);
+        String resultText = "";
+        text1 = v.findViewById(R.id.text1);
         BindData();
+
+        try {
+            resultText = new Task().execute().get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        text1.setText(resultText);
 
         return v;
     }
 
-    void BindData() {
+    void  BindData() {
         models.add(new Model("https://s.ftcdn.net/v2013/pics/all/curated/RKyaEDwp8J7JKeZWQPuOVWvkUjGQfpCx_cover_580.jpg?r=1a0fc22192d0c808b8bb2b9bcfbf4a45b1793687", "First"));
         models.add(new Model("https://www.gettyimages.com/gi-resources/images/500px/983794168.jpg", "Second"));
         models.add(new Model("https://killerattitudestatus.in/wp-content/uploads/2019/12/gud-night-images.jpg", "Third"));
@@ -43,4 +72,7 @@ public class Fragment2 extends Fragment {
         adapter = new Adapter(getActivity(), models);
         lv.setAdapter(adapter);
     }
+
+
+
 }
