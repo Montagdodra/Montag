@@ -14,25 +14,23 @@
         android:orientation="vertical"
         android:background="@drawable/round_orange">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:id="@+id/title"
-            android:textSize="24sp"
-            android:textColor="#000"
-            android:text="dd"
-             />
+        <Button
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="end"
+            android:background="@drawable/ic_baseline_close_24"
+            android:id="@+id/exit"/>
+
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imgv"
-            android:elevation="6dp"
+            android:elevation="20dp"
             android:layout_gravity="center"
             android:layout_width="300dp"
             android:layout_height="200dp"
             app:civ_border_width="1dp"
             app:civ_border_color="#FF7F50"
-            android:layout_margin="10dp"/>
+            />
 
         <!--<ImageView
             android:layout_width="300dp"
@@ -40,23 +38,43 @@
             android:layout_gravity="center"
             android:id="@+id/imgv"/>-->
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="10dp"
+
+
+            android:layout_gravity="left"
+            android:id="@+id/title"
+            android:textSize="24sp"
+            android:textColor="#000"
+            android:text="dd"
+            />
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_margin="10dp"
             android:id="@+id/address"/>
 
         <TextView
+            android:layout_margin="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/desc"/>
-
-        <RelativeLayout
-            android:id="@+id/map_view"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_margin="5dp"/>
+        <androidx.cardview.widget.CardView
+            android:layout_marginTop="30dp"
+            android:elevation="4dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:id="@+id/map_view"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_margin="5dp"/>
+        </androidx.cardview.widget.CardView>
     </LinearLayout>
 
 

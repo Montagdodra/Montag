@@ -4,11 +4,253 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragment3">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:padding="20dp"
+        >
 
+
+        <RadioGroup
+            android:id="@+id/key"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp">
+            <RadioButton
+                android:checked="true"
+                android:button="@null"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center"
+                android:text="시티투어버스"
+                android:textColor="@color/white"
+                android:background="@drawable/checked_orange"
+                android:id="@+id/buttonCity"/>
+            <RadioButton
+                android:checked="false"
+                android:button="@null"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center"
+                android:text="810번 버스"
+                android:textColor="@color/orange"
+                android:background="@drawable/round_orange"
+                android:id="@+id/button810"/>
+            <RadioButton
+                android:checked="false"
+                android:button="@null"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:gravity="center"
+                android:text="820번 버스"
+                android:textColor="@color/orange"
+                android:background="@drawable/round_orange"
+                android:id="@+id/button820"/>
+        </RadioGroup>
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="시티투어버스 시간표"
+            android:id="@+id/a0"
+            android:layout_marginBottom="20dp"
+            />
+
+
+        <LinearLayout
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/citybus"
+            android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/a1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/round_orange"
+                android:layout_marginBottom="20dp"
+                >
+                <TextView
+                    android:layout_marginStart="20dp"
+                    android:layout_gravity="center"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="탐라 순방 코스(역사코스)"/>
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/harubang"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/a2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/round_orange"
+                android:layout_marginBottom="20dp"
+                >
+                <TextView
+                    android:layout_marginStart="20dp"
+                    android:layout_gravity="center"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="사라 오름 코스"/>
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/harubang"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/a3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/round_orange"
+                android:layout_marginBottom="20dp"
+                >
+                <TextView
+                    android:layout_marginStart="20dp"
+                    android:layout_gravity="center"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="올레 해변 코스"/>
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/harubang"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/a4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/round_orange"
+                android:layout_marginBottom="20dp"
+                >
+                <TextView
+                    android:layout_marginStart="20dp"
+                    android:layout_gravity="center"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="포토존 코스"/>
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/harubang"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/bus810"
+            android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/b1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/round_orange"
+                android:layout_marginBottom="20dp"
+                >
+                <TextView
+                    android:layout_marginStart="20dp"
+                    android:layout_gravity="center"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="자연 가득 코스"/>
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/harubang"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/b2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/round_orange"
+                android:layout_marginBottom="20dp"
+                >
+                <TextView
+                    android:layout_marginStart="20dp"
+                    android:layout_gravity="center"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="제주 오름 코스"/>
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/harubang"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/bus820"
+            android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/c1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/round_orange"
+                android:layout_marginBottom="20dp"
+                >
+                <TextView
+                    android:layout_marginStart="20dp"
+                    android:layout_gravity="center"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="부모님과 아이들 코스"/>
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/harubang"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/c2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/round_orange"
+                android:layout_marginBottom="20dp"
+                >
+                <TextView
+                    android:layout_marginStart="20dp"
+                    android:layout_gravity="center"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="감성 여행 코스"/>
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/harubang"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 </FrameLayout>

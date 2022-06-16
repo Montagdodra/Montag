@@ -1,6 +1,15 @@
 package com.example.oss_project;
 
+import static android.content.Context.LOCATION_SERVICE;
+
+import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -9,7 +18,10 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.provider.Settings;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -31,6 +43,7 @@ import com.shashank.sony.fancytoastlib.FancyToast;
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
 
+import net.daum.android.map.MapViewEventListener;
 import net.daum.mf.map.api.MapCircle;
 import net.daum.mf.map.api.MapPOIItem;
 import net.daum.mf.map.api.MapPoint;
@@ -39,12 +52,13 @@ import net.daum.mf.map.api.MapView;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Fragment1 extends Fragment {
+public class Fragment1 extends Fragment implements MapView.CurrentLocationEventListener, MapView.MapViewEventListener {
 
     EditText search;
     ArrayList<Document> documentArrayList = new ArrayList<>();
@@ -56,6 +70,9 @@ public class Fragment1 extends Fragment {
     MapPOIItem searchMarker = new MapPOIItem();
     MapView mapView;
     Button searchL, MyLocation;
+    private static final int GPS_ENABLE_REQUEST_CODE = 2001;
+    private static final int PERMISSIONS_REQUEST_CODE = 100;
+    String[] REQUIRED_PERMISSIONS = {Manifest.permission.ACCESS_FINE_LOCATION};
 
     boolean isTrackingMode = false;
 
@@ -85,6 +102,8 @@ public class Fragment1 extends Fragment {
         mapView = new MapView(v.getContext());
         ViewGroup mapViewContainer = v.findViewById(R.id.map_view);
         mapViewContainer.addView(mapView);
+        //mapView.setMapViewEventListener(this);
+        //mapView.setCurrentLocationEventListener(this);
 
         mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(33.506297, 126.492748), true);
         mapView.setZoomLevel(4, true);
@@ -98,6 +117,8 @@ public class Fragment1 extends Fragment {
         recyclerView.setAdapter(locationAdapter);
         searchL = v.findViewById(R.id.searchL);
         MyLocation = v.findViewById(R.id.MyLocation);
+
+        mapView.setPOIItemEventListener(piel);
 
         searchL.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,15 +140,13 @@ public class Fragment1 extends Fragment {
         MyLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                mLoaderLayout.setVisibility(View.VISIBLE);        에러나는중
-                /*if(isTrackingMode){                                 //modify
-                    mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOff);
-                }else{
-                    isTrackingMode = true;
-                    mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithHeading);
-                }*/
-                /*mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithHeading);
-*/
+                if (!checkLocationServiceStatus()){
+                    showDialogForLocationServiceSetting();
+                }
+                else{
+                    checkRunTimePermission();
+                }
+
             }
         });
 
@@ -197,6 +216,22 @@ public class Fragment1 extends Fragment {
         });
 
         return v;
+    }
+
+
+    private void showDialogForLocationServiceSetting(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity().getApplicationContext());
+        builder.setTitle("위치 서비스 비활성화");
+        builder.setMessage("앱을 사용하기 위해 위치 서비스가 필요합니다.");
+        builder.setCancelable(true);
+        builder.setPositiveButton("설정",new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent callGPSSettingIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                startActivityForResult(callGPSSettingIntent,GPS_ENABLE_REQUEST_CODE);
+            }
+        });
+        builder.create().show();
     }
 
 
@@ -445,5 +480,118 @@ public class Fragment1 extends Fragment {
                 Log.d(TAG, "FAIL");
             }
         });
+    }
+
+    MapView.POIItemEventListener piel = new MapView.POIItemEventListener() {
+        @Override
+        public void onPOIItemSelected(MapView mapView, MapPOIItem mapPOIItem) {
+        }
+
+        @Override
+        public void onCalloutBalloonOfPOIItemTouched(MapView mapView, MapPOIItem mapPOIItem) {
+
+        }
+
+        @Override
+        public void onCalloutBalloonOfPOIItemTouched(MapView mapView, MapPOIItem mapPOIItem, MapPOIItem.CalloutBalloonButtonType calloutBalloonButtonType) {
+            if (mapPOIItem == searchMarker){
+                String url ="kakaomap://search?q="+mSearchName;
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(intent);
+            }else{
+
+            }
+        }
+        @Override
+        public void onDraggablePOIItemMoved(MapView mapView, MapPOIItem mapPOIItem, MapPoint mapPoint) {
+
+        }
+    };
+    public void checkRunTimePermission() {
+        int hasFineLocationPermission = ContextCompat.checkSelfPermission(getContext().getApplicationContext(),Manifest.permission.ACCESS_FINE_LOCATION);
+        if (hasFineLocationPermission == PackageManager.PERMISSION_GRANTED){
+            mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithHeading);
+        }else{
+            if(ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),REQUIRED_PERMISSIONS[0])){
+                Toast.makeText(getContext().getApplicationContext(),"이 앱을 실행하려면 위치 접근 권한이 필요합니다.",Toast.LENGTH_LONG).show();
+                ActivityCompat.requestPermissions(getActivity(),REQUIRED_PERMISSIONS,PERMISSIONS_REQUEST_CODE);
+            }else{
+                ActivityCompat.requestPermissions(getActivity(),REQUIRED_PERMISSIONS,PERMISSIONS_REQUEST_CODE);
+            }
+        }
+    }
+    public boolean checkLocationServiceStatus(){
+        LocationManager locationManager = (LocationManager) getContext().getSystemService(LOCATION_SERVICE);
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER); }
+
+    @Override
+    public void onCurrentLocationUpdate(MapView mapView, MapPoint mapPoint, float v) {
+        if (!isTrackingMode) {
+            mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOff);
+        }else{
+            mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading);
+        }
+    }
+
+    @Override
+    public void onCurrentLocationDeviceHeadingUpdate(MapView mapView, float v) {
+
+    }
+
+    @Override
+    public void onCurrentLocationUpdateFailed(MapView mapView) {
+        mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading);
+
+    }
+
+    @Override
+    public void onCurrentLocationUpdateCancelled(MapView mapView) {
+        mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading);
+
+    }
+
+    @Override
+    public void onMapViewInitialized(MapView mapView) {
+
+    }
+
+    @Override
+    public void onMapViewCenterPointMoved(MapView mapView, MapPoint mapPoint) {
+
+    }
+
+    @Override
+    public void onMapViewZoomLevelChanged(MapView mapView, int i) {
+
+    }
+
+    @Override
+    public void onMapViewSingleTapped(MapView mapView, MapPoint mapPoint) {
+        recyclerView.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onMapViewDoubleTapped(MapView mapView, MapPoint mapPoint) {
+
+    }
+
+    @Override
+    public void onMapViewLongPressed(MapView mapView, MapPoint mapPoint) {
+
+    }
+
+    @Override
+    public void onMapViewDragStarted(MapView mapView, MapPoint mapPoint) {
+
+    }
+
+    @Override
+    public void onMapViewDragEnded(MapView mapView, MapPoint mapPoint) {
+
+    }
+
+    @Override
+    public void onMapViewMoveFinished(MapView mapView, MapPoint mapPoint) {
+
     }
 }

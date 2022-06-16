@@ -6,10 +6,12 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +32,7 @@ public class DetailActivity extends AppCompatActivity {
     ViewGroup mapViewContainer;
     MapPOIItem marker;
     String lat, longt,adr,nm;
+    Button exit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,7 @@ public class DetailActivity extends AppCompatActivity {
         address = findViewById(R.id.address);
         imgv = findViewById(R.id.imgv);
         desc = findViewById(R.id.desc);
+        exit = findViewById(R.id.exit);
 
 
         mapView = new MapView(this);
@@ -74,7 +78,12 @@ public class DetailActivity extends AppCompatActivity {
         Picasso.with(this).load(img).into(imgv);
 
 
-
+        exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     MapView.POIItemEventListener piel = new MapView.POIItemEventListener() {
@@ -89,7 +98,7 @@ public class DetailActivity extends AppCompatActivity {
 
         @Override
         public void onCalloutBalloonOfPOIItemTouched(MapView mapView, MapPOIItem mapPOIItem, MapPOIItem.CalloutBalloonButtonType calloutBalloonButtonType) {
-            String url ="kakaomap://search?q="+nm;
+            String url ="kakaomap://search?q="+nm+"&p="+lat+","+longt;
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
             startActivity(intent);
         }
