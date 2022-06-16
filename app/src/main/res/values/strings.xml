@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">oss_project</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="restapi_key">KakaoAK df78a097bce761ea57b529965f24c169</string>
+</resources>

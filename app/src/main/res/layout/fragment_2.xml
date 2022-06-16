@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".Fragment2">
+
+        <ListView
+            android:divider="@android:color/transparent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+             android:id="@+id/lv"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="50dp">
+        </ListView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="오늘의 추천 관광지"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:textColor="#FF7F50"
+            android:textSize="18sp"
+            android:id="@+id/counttxt"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginEnd="10dp"
+            android:orientation="vertical">
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="right"
+                    android:background="@drawable/ic_baseline_add_circle_24"
+                    android:id="@+id/filter"/>
+                <LinearLayout
+                    android:id="@+id/filterWindow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:visibility="gone"
+                    android:padding="10dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/round_border">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#FF7F50"
+                            android:textSize="12sp"
+                            android:text="원하는 키워드를 선택해주세요\n" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="연령대" />
+                        <RadioGroup
+                            android:id="@+id/age"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                                <RadioButton
+                                    android:id="@+id/parent"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+                                <RadioButton
+                                    android:id="@+id/children"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+                                <RadioButton
+                                    android:id="@+id/couple"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+                        </RadioGroup>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="테마" />
+                        <RadioGroup
+                            android:id="@+id/theme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+                        </RadioGroup>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="날씨" />
+                        <RadioGroup
+                            android:id="@+id/weather"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+                        </RadioGroup>
+                </LinearLayout>
+        </LinearLayout>
+
+</FrameLayout>
